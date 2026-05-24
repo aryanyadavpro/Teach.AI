@@ -1,14 +1,34 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import { GraduationCap, Sparkles } from 'lucide-react';
 import styles from './WelcomeCard.module.css';
 
 export default function WelcomeCard() {
+    const [userName, setUserName] = useState('');
+
+    useEffect(() => {
+        async function fetchSession() {
+            try {
+                const res = await fetch('/api/auth/session');
+                const session = await res.json();
+                if (session?.user?.name) {
+                    setUserName(session.user.name);
+                }
+            } catch (err) {
+                console.error('Failed to fetch session:', err);
+            }
+        }
+        fetchSession();
+    }, []);
+
     return (
         <div className={`${styles.card} animate-scale-in`}>
             <div className={styles.content}>
                 <h1 className={styles.title}>
                     Welcome back, <br />
                     <span className={styles.name}>
-                        Ramesh Sir!
+                        {userName || 'Teacher'}!
                         <GraduationCap size={28} className={styles.nameIcon} strokeWidth={2.5} />
                     </span>
                 </h1>
