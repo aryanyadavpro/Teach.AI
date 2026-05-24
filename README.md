@@ -1,4 +1,4 @@
-# 🎓 Learnify (Innerve-x)
+# 🎓 Teach.AI 
 
 > **Next-Generation AI-Powered E-Learning & Interactive Study Platform**
 
@@ -92,7 +92,7 @@ npm run start
 ## 📂 Project Structure
 
 ```
-c:/Learnify-Innerve-x-main
+c:/Teach.AI
 ├── public/                 # Static assets and images
 ├── src/
 │   ├── actions/            # Server Actions
