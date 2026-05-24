@@ -1,0 +1,271 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: #ffffff;
+}
+
+/* Login Card */
+.loginCard {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+}
+
+
+
+/* Form */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.formTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    text-align: center;
+    margin-bottom: -0.25rem;
+}
+
+.formSubtitle {
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Input Group */
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.inputIcon {
+    position: absolute;
+    left: 0.875rem;
+    width: 18px;
+    height: 18px;
+    color: #9ca3af;
+    pointer-events: none;
+}
+
+.input {
+    width: 100%;
+    height: 44px;
+    padding: 0 0.875rem 0 2.75rem;
+    font-size: 0.9375rem;
+    color: #111827;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.input::placeholder {
+    color: #9ca3af;
+}
+
+.togglePassword {
+    position: absolute;
+    right: 0.75rem;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.togglePassword:hover {
+    color: #6b7280;
+}
+
+.togglePassword svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Remember Row */
+.rememberRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #374151;
+    cursor: pointer;
+    position: relative;
+    padding-left: 24px;
+}
+
+.checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    transition: all 0.15s;
+}
+
+.checkbox:checked~.checkmark {
+    background: #4f46e5;
+    border-color: #4f46e5;
+}
+
+.checkmark::after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox:checked~.checkmark::after {
+    display: block;
+}
+
+.forgotLink {
+    font-size: 0.875rem;
+    color: #4f46e5;
+    font-weight: 500;
+}
+
+.forgotLink:hover {
+    color: #4338ca;
+}
+
+/* Submit Button */
+.submitBtn {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: #4f46e5;
+    color: white;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.submitBtn:hover:not(:disabled) {
+    background: #4338ca;
+}
+
+.submitBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.submitBtn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Loader */
+.loader {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+/* Signup Prompt */
+.signupPrompt {
+    text-align: center;
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: 1.5rem;
+}
+
+.signupLink {
+    color: #4f46e5;
+    font-weight: 500;
+}
+
+.signupLink:hover {
+    color: #4338ca;
+}
+
+/* Hide animated backgrounds */
+.backgroundShapes {
+    display: none;
+}
+
+.shape1,
+.shape2,
+.shape3 {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    .loginCard {
+        padding: 1rem;
+    }
+
+    .socialButtons {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,398 @@
+.profile {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainContainer {
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+/* Profile Header */
+.profileHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+    margin-bottom: 2rem;
+}
+
+.avatarSection {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.avatarWrapper {
+    position: relative;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: var(--radius-full);
+    border: 4px solid var(--color-bg-card);
+    box-shadow: var(--shadow-lg);
+    animation: avatarPulse 3s ease infinite;
+}
+
+@keyframes avatarPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+    }
+}
+
+.changeAvatarBtn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-full);
+    background: var(--gradient-primary);
+    color: white;
+    border: 2px solid var(--color-bg-card);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    transition: transform 0.2s ease;
+}
+
+.changeAvatarBtn:hover {
+    transform: scale(1.1);
+}
+
+.headerInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.studentName {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.studentClass {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+}
+
+.badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.badge {
+    padding: 0.25rem 0.75rem;
+    background: var(--color-bg-card);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+}
+
+.headerActions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.editBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: var(--radius-lg);
+    font-weight: 500;
+    font-size: 0.9375rem;
+    transition: all 0.2s ease;
+}
+
+.editBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.editActions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.cancelBtn {
+    padding: 0.75rem 1.5rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-lg);
+    font-weight: 500;
+    font-size: 0.9375rem;
+    transition: all 0.2s ease;
+}
+
+.cancelBtn:hover {
+    border-color: var(--color-text-secondary);
+}
+
+.saveBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    color: white;
+    border-radius: var(--radius-lg);
+    font-weight: 500;
+    font-size: 0.9375rem;
+    transition: all 0.2s ease;
+}
+
+.saveBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Tabs */
+.tabsContainer {
+    display: flex;
+    gap: 0.5rem;
+    background: var(--color-bg-card);
+    padding: 0.5rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+    margin-bottom: 2rem;
+}
+
+.tab {
+    flex: 1;
+    padding: 0.875rem 1.5rem;
+    border-radius: var(--radius-lg);
+    font-weight: 500;
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    transition: all 0.2s ease;
+}
+
+.tab:hover {
+    background: var(--color-bg);
+}
+
+.tab.active {
+    background: var(--gradient-primary);
+    color: white;
+}
+
+/* Profile Content */
+.profileContent {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.infoGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5rem;
+}
+
+.infoCard,
+.statsCard {
+    background: var(--color-bg-card);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+}
+
+.infoCard h3,
+.statsCard h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.infoFields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.field.fullWidth {
+    grid-column: 1 / -1;
+}
+
+.field label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.field span {
+    font-size: 0.9375rem;
+    color: var(--color-text-primary);
+    font-weight: 500;
+}
+
+.field input,
+.field select,
+.field textarea {
+    padding: 0.625rem 0.875rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    font-size: 0.9375rem;
+    color: var(--color-text-primary);
+    transition: all 0.2s ease;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.field textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Performance Stats */
+.performanceStats {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.perfItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.perfCircle {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.circleChart {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.circleBg {
+    fill: none;
+    stroke: #e2e8f0;
+    stroke-width: 3.5;
+}
+
+.circleFill {
+    fill: none;
+    stroke: var(--color-primary);
+    stroke-width: 3.5;
+    stroke-linecap: round;
+    animation: fillCircle 1.5s ease forwards;
+}
+
+@keyframes fillCircle {
+    from {
+        stroke-dasharray: 0, 100;
+    }
+}
+
+.perfValue {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.perfLabel {
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .profileHeader {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .avatarSection {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .badges {
+        justify-content: center;
+    }
+
+    .headerActions {
+        width: 100%;
+    }
+
+    .editBtn,
+    .saveBtn,
+    .cancelBtn {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .infoFields {
+        grid-template-columns: 1fr;
+    }
+
+    .performanceStats {
+        flex-direction: column;
+        align-items: center;
+    }
+}

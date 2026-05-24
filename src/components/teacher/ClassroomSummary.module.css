@@ -1,0 +1,190 @@
+.container {
+    background: var(--color-surface);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+.title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    font-family: var(--font-display);
+}
+
+.count {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    background: var(--color-bg);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-md);
+    margin-left: 0.5rem;
+    font-weight: 500;
+}
+
+.viewAllBtn {
+    font-size: 0.875rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.viewAllBtn:hover {
+    color: var(--color-primary-dark);
+    transform: translateX(2px);
+}
+
+.loading {
+    text-align: center;
+    padding: 3rem;
+    color: var(--color-text-muted);
+    font-size: 0.9375rem;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    background: var(--color-bg);
+    border-radius: var(--radius-xl);
+    border: 2px dashed var(--color-border);
+}
+
+.emptyIcon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.75rem;
+    opacity: 0.8;
+}
+
+.emptyState p {
+    color: var(--color-text-secondary);
+    margin: 0 0 1.25rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+}
+
+.createBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-primary);
+    color: white;
+    padding: 0.625rem 1.25rem;
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25);
+}
+
+.createBtn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+}
+
+.classList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.classCard {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--color-bg);
+    border-radius: var(--radius-lg);
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.classCard:hover {
+    background: white;
+    border-color: var(--color-primary-light);
+    box-shadow: var(--shadow-sm);
+    transform: translateX(4px);
+}
+
+.classIconWrapper {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, white 0%, #f0f9ff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    transition: transform 0.2s ease;
+}
+
+.classCard:hover .classIconWrapper {
+    transform: scale(1.05) rotate(3deg);
+    border-color: var(--color-primary-light);
+}
+
+.classInfo {
+    flex: 1;
+}
+
+.className {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.classMetadata {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+}
+
+.classCode {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--color-primary);
+    padding: 0.125rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-family: monospace;
+    font-weight: 600;
+}
+
+.moreLink {
+    text-align: center;
+    padding: 0.75rem;
+    color: var(--color-text-secondary);
+    font-size: 0.8125rem;
+    text-decoration: none;
+    font-weight: 500;
+    background: var(--color-bg);
+    border-radius: var(--radius-lg);
+    transition: all 0.2s ease;
+}
+
+.moreLink:hover {
+    color: var(--color-primary);
+    background: var(--color-primary-light);
+}

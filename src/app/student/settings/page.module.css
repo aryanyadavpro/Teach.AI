@@ -1,0 +1,520 @@
+.settings {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+}
+
+.mainContainer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.pageHeader {
+    margin-bottom: 2rem;
+}
+
+.pageTitle {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.pageDesc {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+}
+
+/* Success Toast */
+.successToast {
+    position: fixed;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    color: white;
+    padding: 0.875rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 100;
+    box-shadow: 0 8px 24px rgba(34, 197, 94, 0.4);
+    animation: slideDown 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+}
+
+.toastIcon {
+    width: 24px;
+    height: 24px;
+    background: white;
+    color: #22c55e;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+}
+
+/* Language Section - Featured */
+.languageSection {
+    background: var(--color-bg-card, #ffffff);
+    border-radius: var(--radius-xl, 16px);
+    padding: 2rem;
+    border: 1px solid var(--color-border, #e2e8f0);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+.languageHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+
+.languageIcon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+}
+
+.languageHeader h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-primary, #1e293b);
+    margin: 0;
+}
+
+.languageHeader p {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary, #64748b);
+    margin: 0.25rem 0 0;
+}
+
+/* Current Language Display */
+.currentLangDisplay {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.currentLabel {
+    font-size: 0.875rem;
+    color: var(--color-text-muted, #94a3b8);
+    font-weight: 500;
+}
+
+.currentLangBadge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    background: #f8fafc;
+    border: 2px solid;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.currentLangIcon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.currentLangName {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-primary, #1e293b);
+}
+
+/* Language Grid */
+.languageGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 1rem;
+}
+
+.languageCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 1rem;
+    background: #ffffff;
+    border: 2px solid var(--color-border, #e2e8f0);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.5s ease backwards;
+    animation-delay: var(--delay);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.languageCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-color: var(--lang-color);
+}
+
+.languageCard.selected {
+    border-color: var(--lang-color);
+    background: linear-gradient(180deg, #ffffff 0%, var(--lang-color) 0%, transparent 5%);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.languageCard.animating {
+    animation: selectPulse 0.3s ease;
+}
+
+@keyframes selectPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.95);
+    }
+}
+
+.langCircle {
+    width: 64px;
+    height: 64px;
+    border: 3px solid;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+    background: #ffffff;
+}
+
+.languageCard:hover .langCircle {
+    transform: scale(1.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.languageCard.selected .langCircle {
+    background: linear-gradient(135deg, var(--lang-color) 0%, var(--lang-color) 100%);
+    border-color: var(--lang-color);
+}
+
+.languageCard.selected .langIcon {
+    color: white !important;
+}
+
+.langIcon {
+    font-size: 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.checkMark {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    width: 22px;
+    height: 22px;
+    background: #22c55e;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 2px solid white;
+    animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.langNative {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-text-primary, #1e293b);
+    text-align: center;
+}
+
+.langEnglish {
+    font-size: 0.75rem;
+    color: var(--color-text-muted, #94a3b8);
+}
+
+/* Settings Grid */
+.settingsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.settingsCard {
+    background: var(--color-bg-card, #ffffff);
+    border-radius: var(--radius-xl, 16px);
+    padding: 1.5rem;
+    border: 1px solid var(--color-border, #e2e8f0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.2s ease;
+}
+
+.settingsCard:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.settingsCard h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.settingItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.settingItem:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.settingInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.settingLabel {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.settingDesc {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+}
+
+.settingSelect {
+    padding: 0.625rem 1rem;
+    background: var(--color-bg, #f8fafc);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg, 12px);
+    font-size: 0.875rem;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 140px;
+}
+
+.settingSelect:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Toggle Switch */
+.toggle {
+    position: relative;
+    width: 52px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cbd5e1;
+    border-radius: 28px;
+    transition: 0.3s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle input:checked+.slider {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.toggle input:checked+.slider:before {
+    transform: translateX(24px);
+}
+
+/* Save Button */
+.saveBtn {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    border-radius: var(--radius-lg, 12px);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    border: none;
+    cursor: pointer;
+}
+
+.saveBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.saveBtn:active {
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .mainContainer {
+        padding: 1rem;
+    }
+
+    .settingsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .languageGrid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+    }
+
+    .languageCard {
+        padding: 1rem 0.5rem;
+    }
+
+    .langCircle {
+        width: 52px;
+        height: 52px;
+    }
+
+    .langIcon {
+        font-size: 1.25rem;
+    }
+
+    .langNative {
+        font-size: 0.8125rem;
+    }
+
+    .langEnglish {
+        display: none;
+    }
+
+    .languageSection {
+        padding: 1.25rem;
+    }
+
+    .currentLangDisplay {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .languageGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .langCircle {
+        width: 48px;
+        height: 48px;
+    }
+
+    .settingItem {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .settingSelect {
+        width: 100%;
+    }
+}

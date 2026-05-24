@@ -1,0 +1,425 @@
+.quizPage {
+    min-height: 100vh;
+    background: var(--color-bg);
+}
+
+.mainContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.backBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s ease;
+}
+
+.backBtn:hover {
+    color: var(--color-primary);
+}
+
+/* Quiz Header */
+.quizHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.subjectBadge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--color-success);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.quizTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.quizMeta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+}
+
+.timer {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.questionCount {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+}
+
+/* Progress */
+.progressBar {
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: var(--radius-full);
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: var(--gradient-primary);
+    transition: width 0.3s ease;
+}
+
+/* Question Card */
+.questionCard {
+    background: var(--color-bg-card);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    margin-bottom: 1.5rem;
+}
+
+.questionText {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.optionsList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.optionBtn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-bg);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-align: left;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.optionBtn:hover:not(.correct):not(.incorrect) {
+    border-color: var(--color-primary);
+    background: rgba(59, 130, 246, 0.05);
+}
+
+.optionBtn.selected {
+    border-color: var(--color-primary);
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.optionBtn.correct {
+    border-color: var(--color-success);
+    background: rgba(34, 197, 94, 0.1);
+}
+
+.optionBtn.incorrect {
+    border-color: var(--color-danger);
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.optionLetter {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-card);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+.optionBtn.selected .optionLetter {
+    background: var(--color-primary);
+    color: white;
+}
+
+.optionBtn.correct .optionLetter {
+    background: var(--color-success);
+    color: white;
+}
+
+.optionBtn.incorrect .optionLetter {
+    background: var(--color-danger);
+    color: white;
+}
+
+.optionText {
+    flex: 1;
+    font-size: 0.9375rem;
+    color: var(--color-text-primary);
+}
+
+.checkIcon,
+.wrongIcon {
+    font-size: 1.25rem;
+}
+
+/* Explanation */
+.explanation {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-lg);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.correctExplanation {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.incorrectExplanation {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.explanation strong {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.explanation p {
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+}
+
+/* Navigation */
+.quizNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.navBtn {
+    padding: 0.75rem 1.5rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    transition: all 0.2s ease;
+}
+
+.navBtn:hover:not(:disabled) {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.navBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.checkBtn,
+.nextBtn {
+    padding: 0.75rem 2rem;
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.checkBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.checkBtn:hover:not(:disabled),
+.nextBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Question Dots */
+.questionDots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    transition: all 0.2s ease;
+}
+
+.dot:hover {
+    border-color: var(--color-primary);
+}
+
+.activeDot {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+.answeredDot {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: var(--color-primary);
+}
+
+/* Results */
+.resultsCard {
+    background: var(--color-bg-card);
+    border-radius: var(--radius-xl);
+    padding: 3rem 2rem;
+    border: 1px solid var(--color-border);
+    text-align: center;
+    max-width: 500px;
+    margin: 3rem auto;
+}
+
+.resultsEmoji {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.resultsTitle {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 2rem;
+}
+
+.scoreCircle {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    color: white;
+}
+
+.scoreValue {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.scoreLabel {
+    font-size: 0.875rem;
+    opacity: 0.9;
+}
+
+.scoreDetails {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.scoreItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+}
+
+.resultsActions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.retryBtn {
+    padding: 0.875rem 2rem;
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.retryBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.homeBtn {
+    padding: 0.875rem 2rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    border-radius: var(--radius-lg);
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.homeBtn:hover {
+    border-color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+    .quizHeader {
+        flex-direction: column;
+    }
+
+    .quizMeta {
+        align-items: flex-start;
+    }
+
+    .questionCard {
+        padding: 1.5rem;
+    }
+}

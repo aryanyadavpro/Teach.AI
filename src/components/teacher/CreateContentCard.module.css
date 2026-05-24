@@ -1,0 +1,110 @@
+.card {
+    background: var(--color-bg-card);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    text-align: center;
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.voiceBtn {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+    transition: all 0.2s ease;
+}
+
+.voiceBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+}
+
+.voiceBtn:active {
+    transform: scale(0.98);
+}
+
+.trySaying {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #f8fafc;
+    padding: 0.625rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.8125rem;
+    margin-bottom: 1.5rem;
+}
+
+.tryLabel {
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+.tryExample {
+    color: var(--color-text-secondary);
+}
+
+.divider {
+    height: 1px;
+    background: var(--color-border);
+    margin: 0 -1.5rem 1.5rem;
+}
+
+.contentTypes {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.typeBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.typeBtn:hover {
+    transform: translateY(-2px);
+}
+
+.typeIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.typeLabel {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
