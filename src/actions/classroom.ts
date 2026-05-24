@@ -2,9 +2,10 @@
 
 import connectDB from "@/lib/db";
 import Classroom from "@/models/Classroom";
-import Enrollment from "@/models/Enrollment";
+import Enrollment, { findStudentEnrollment } from "@/models/Enrollment";
 import { auth } from "@/auth";
 import { revalidatePath } from "next/cache";
+import mongoose from "mongoose";
 
 function generateCode(length: number = 6) {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -62,23 +63,22 @@ export async function joinClassroom(formData: FormData) {
 
     await connectDB();
 
-    const classroom = await Classroom.findOne({ code });
+    const classroom = await Classroom.findOne({ code: code.toUpperCase() });
     if (!classroom) {
         throw new Error("Classroom not found");
     }
 
-    // Check if already enrolled
-    const existingEnrollment = await Enrollment.findOne({
-        studentId: session.user.id,
-        classroomId: classroom._id,
-    });
+    const existingEnrollment = await findStudentEnrollment(
+        session.user.id,
+        classroom._id
+    );
 
     if (existingEnrollment) {
         throw new Error("You are already enrolled in this class");
     }
 
     await Enrollment.create({
-        studentId: session.user.id,
+        studentId: new mongoose.Types.ObjectId(session.user.id),
         classroomId: classroom._id,
     });
 

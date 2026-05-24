@@ -146,6 +146,10 @@ export default function EnrolledClassrooms() {
                     assignments: allMats.filter((m: Material) => m.type === 'assignment'),
                     others: allMats.filter((m: Material) => !['quiz', 'assignment'].includes(m.type))
                 });
+            } else if (response.status === 403) {
+                alert('You are not enrolled in this classroom. Please join with a valid code.');
+                closeModal();
+                fetchEnrollments();
             }
         } catch (error) {
             console.error('Error fetching materials:', error);

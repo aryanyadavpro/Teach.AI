@@ -4,22 +4,23 @@ import dbConnect from '@/lib/db';
 import QuizResult from '@/models/QuizResult';
 import Material from '@/models/Material';
 import User from '@/models/User';
+import { isStudentEnrolled } from '@/models/Enrollment';
 import mongoose from 'mongoose';
 
 export async function POST(request: NextRequest) {
     try {
         const session = await auth();
 
-        if (!session?.user?.email) {
+        if (!session?.user?.id || session.user.role !== 'STUDENT') {
             return NextResponse.json(
-                { error: 'Unauthorized' },
+                { error: 'Unauthorized. Students only.' },
                 { status: 401 }
             );
         }
 
         await dbConnect();
 
-        const user = await User.findOne({ email: session.user.email });
+        const user = await User.findById(session.user.id);
         if (!user) {
             return NextResponse.json(
                 { error: 'User not found' },
@@ -34,6 +35,14 @@ export async function POST(request: NextRequest) {
             return NextResponse.json(
                 { error: 'Missing required fields' },
                 { status: 400 }
+            );
+        }
+
+        const enrolled = await isStudentEnrolled(session.user.id, classroomId);
+        if (!enrolled) {
+            return NextResponse.json(
+                { error: 'You are not enrolled in this classroom' },
+                { status: 403 }
             );
         }
 

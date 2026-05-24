@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/auth';
 import dbConnect from '@/lib/db';
 import Material from '@/models/Material';
+import { isStudentEnrolled } from '@/models/Enrollment';
 import mongoose from 'mongoose';
 
 export async function GET(
@@ -12,9 +13,9 @@ export async function GET(
         const { classroomId } = await params;
         const session = await auth();
 
-        if (!session?.user?.email) {
+        if (!session?.user?.id || session.user.role !== 'STUDENT') {
             return NextResponse.json(
-                { error: 'Unauthorized' },
+                { error: 'Unauthorized. Students only.' },
                 { status: 401 }
             );
         }
@@ -32,8 +33,13 @@ export async function GET(
             );
         }
 
-        // Debug: Log the query
-        console.log('Fetching materials for classroom:', classroomId);
+        const enrolled = await isStudentEnrolled(session.user.id, classroomObjId);
+        if (!enrolled) {
+            return NextResponse.json(
+                { error: 'You are not enrolled in this classroom' },
+                { status: 403 }
+            );
+        }
 
         // Fetch all published materials for this classroom
         const materials = await Material.find({
@@ -44,9 +50,6 @@ export async function GET(
             .sort({ createdAt: -1 })
             .lean();
 
-        console.log('Found materials count:', materials.length);
-
-        // Transform materials to include full content
         const transformedMaterials = materials.map((m: any) => ({
             _id: m._id.toString(),
             type: m.type,

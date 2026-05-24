@@ -39,8 +39,11 @@ export async function POST(req: Request) {
 
         // 2. Check if already enrolled
         const existingEnrollment = await Enrollment.findOne({
-            studentId: new mongoose.Types.ObjectId(session.user.id),
             classroomId: classroom._id,
+            $or: [
+                { studentId: new mongoose.Types.ObjectId(session.user.id) },
+                { studentId: session.user.id },
+            ],
         });
 
         if (existingEnrollment) {
